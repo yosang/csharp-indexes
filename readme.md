@@ -9,6 +9,10 @@ Indexers are class members similar to properties, that allow us to get / set val
 - They are defined with square brackets `[]` instead of parenthesis `()`.
 - They are commonly used with arrays.
 
+# Multidimensional Indexer
+- Its just an indexer that takes two parameters
+
+
 # Why should we care?
 Consider this class method
 

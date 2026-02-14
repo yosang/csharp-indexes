@@ -6,16 +6,21 @@
         {
             Animals myAnimals = new Animals(new string[] { "Ella", "Yoda" });
 
-            // Console.WriteLine(myAnimals[0]);
-            // Console.WriteLine(myAnimals[1]);
-            // Console.WriteLine(myAnimals[2]);
-            // Console.WriteLine(myAnimals[3]);
-            // Console.WriteLine(myAnimals[4]);
+            // With indexer
+            Console.WriteLine(myAnimals[0]);
+            Console.WriteLine(myAnimals[1]);
+            // Console.WriteLine(myAnimals[2]); // just an empty space in memory since the array has a size of 5 by default
             // Console.WriteLine(myAnimals[5]); // Outside of boundry, animals can only contain 5 animals
 
+            // Without indexer
             // Does the same thing, but here we are calling a method and passing it an int
             // With an indexer we can simply use brackets like we would do with a normal array
-            Console.WriteLine(myAnimals.GetAnimal(0));
+            // Console.WriteLine(myAnimals.GetAnimal(0));
+
+            // Multidimensional Indexer
+            myAnimals[0, 1] = "Buddy";
+
+            Console.WriteLine(myAnimals[0, 1]); // Buddy
 
         }
     }
@@ -23,9 +28,12 @@
     public class Animals
     {
         static public int size = 5;
+        static public int sizeX = 2;
+        static public int sizeY = 3;
         private string[] animalList = new string[size];
+        private string[,] animalMatrix = new string[sizeX, sizeY];
 
-        // Constructor - Lets us pass an array when creatin animals
+        // Constructor - Alows us to pass it an array and fill out the rest of the spots
         public Animals(string[] arr)
         {
             int slots = 0;
@@ -35,12 +43,6 @@
             {
                 animalList[i] = arr[i];
                 slots++;
-            }
-
-            // Fill the rest of the slots
-            for (int j = slots; j < size; j++)
-            {
-                animalList[j] = "Empty slot";
             }
         }
 
@@ -57,9 +59,16 @@
             set => animalList[index] = value;
         }
 
+        // Without an indexer we would have to use this
         public string GetAnimal(int index)
         {
             return animalList[index];
+        }
+
+        public string this[int row, int col]
+        {
+            get => animalMatrix[row, col];
+            set => animalMatrix[row, col] = value;
         }
     }
 

@@ -6,12 +6,17 @@
         {
             Animals myAnimals = new Animals(new string[] { "Ella", "Yoda" });
 
-            Console.WriteLine(myAnimals[0]);
-            Console.WriteLine(myAnimals[1]);
-            Console.WriteLine(myAnimals[2]);
-            Console.WriteLine(myAnimals[3]);
-            Console.WriteLine(myAnimals[4]);
+            // Console.WriteLine(myAnimals[0]);
+            // Console.WriteLine(myAnimals[1]);
+            // Console.WriteLine(myAnimals[2]);
+            // Console.WriteLine(myAnimals[3]);
+            // Console.WriteLine(myAnimals[4]);
             // Console.WriteLine(myAnimals[5]); // Outside of boundry, animals can only contain 5 animals
+
+            // Does the same thing, but here we are calling a method and passing it an int
+            // With an indexer we can simply use brackets like we would do with a normal array
+            Console.WriteLine(myAnimals.GetAnimal(0));
+
         }
     }
 
@@ -40,20 +45,21 @@
         }
 
         // Indexer
-        // Declared with this, square brackets and index of type int
+        // They allow us access control to a class member that can be indexed like an array
+        // Similar to properties, but we use this as the name
+        // Declared with square brackets [] instead of braces ()
         // The get method returns animalList[index]
         // The set method assigns value to animalList[index]
+        // Without an indexer we would have to design a method that does the same thing and call it like Animals.GetAnimal(0)
         public string this[int index]
         {
-            get
-            {
-                return animalList[index];
-            }
+            get => animalList[index];
+            set => animalList[index] = value;
+        }
 
-            set
-            {
-                animalList[index] = value;
-            }
+        public string GetAnimal(int index)
+        {
+            return animalList[index];
         }
     }
 

@@ -40,14 +40,13 @@
         }
 
         // Indexer
+        // Declared with this, square brackets and index of type int
+        // The get method returns animalList[index]
+        // The set method assigns value to animalList[index]
         public string this[int index]
         {
             get
             {
-                if (index < 0 || index >= size)
-                {
-                    throw new IndexOutOfRangeException("Invalid animal index");
-                }
                 return animalList[index];
             }
 
